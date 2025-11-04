@@ -18,7 +18,7 @@
 
       <div class="mb-3">
         <label class="form-label">Buku Dipesan</label>
-        <input type="text" id="buku" class="form-control" readonly>
+        <input type="text" id="buku" class="form-control" placeholder="Masukkan nama buku yang ingin dipesan" required>
       </div>
 
       <div class="mb-3">
@@ -39,18 +39,19 @@
     </form>
   </div>
 
-  <script src="js/data.js"></script>
   <script>
-    // Ambil data buku dari URL
-    const params = new URLSearchParams(window.location.search);
-    const kode = params.get("kode");
-    const buku = dataKatalogBuku.find(b => b.kodeBarang === kode);
-    if (buku) document.getElementById("buku").value = buku.namaBarang;
-
-    // Simpan pesanan ke localStorage
     document.getElementById("formPesan").addEventListener("submit", function(e) {
       e.preventDefault();
-      alert("Pesanan berhasil dibuat untuk buku: " + buku.namaBarang);
+
+      const nama = document.getElementById("nama").value;
+      const buku = document.getElementById("buku").value;
+      const jumlah = document.getElementById("jumlah").value;
+      const metode = document.getElementById("metode").value;
+
+      alert(
+        `Pesanan berhasil dibuat!\n\nNama: ${nama}\nBuku: ${buku}\nJumlah: ${jumlah}\nMetode Pembayaran: ${metode}`
+      );
+
       window.location.href = "tracking.html";
     });
   </script>
