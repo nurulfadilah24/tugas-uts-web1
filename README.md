@@ -1,136 +1,96 @@
 
-# 📚 Katalog Buku App
-Aplikasi sederhana berbasis **HTML, CSS, dan JavaScript** untuk menampilkan katalog buku, melakukan login, dan melacak pesanan (tracking pengiriman).  
-Didesain untuk latihan dasar pemrograman web dan pengelolaan data menggunakan **localStorage**.
+## Data Mahasiswa
+
+## Nama : Nurul Fadilah
+
+## Nim  : 312410689
+
+## Kelas: TI.24 A3
+
+## Mata Kuliah : Pemograman Web 1
 
 ---
 
-## 🧩 Fitur Utama
-✅ **Login Multi-User**  
-Terdapat dua jenis pengguna:  
-- **User** (Rina Wulandari, Agus Pranoto)  
-- **Admin** (Siti Marlina)
-
-✅ **Dashboard / Menu Utama**  
-Menampilkan daftar katalog buku dengan detail kode, nama, jenis, edisi, harga, dan stok.
-
-✅ **Tracking Pesanan**  
-Pengguna dapat melacak pesanan berdasarkan **Nomor DO (Delivery Order)** untuk melihat status dan riwayat pengiriman.
-
-✅ **Logout**  
-Fitur untuk keluar dari akun dan menghapus data pengguna aktif.
-
-✅ **Data Dummy Otomatis**  
-Semua data pengguna, buku, dan pengiriman disimpan di `js/data.js` sehingga tidak perlu koneksi database.
+## 🚀 Cara Menjalankan
+1. Clone atau download repository.  
+2. Buka folder project.  
+3. Jalankan index.html di browser (Chrome/Edge/Firefox).  
+> Tidak memerlukan server — client-side only.
 
 ---
 
-## 📂 Struktur Folder
-
-```
-KatalogBukuApp/
-│
-├── index.html          ← Halaman Login
-├── dashboard.html      ← Halaman Menu Utama / Katalog Buku
-├── tracking.html       ← Halaman Tracking Pesanan
-│
-├── css/
-│   └── style.css       ← File gaya tampilan (Bootstrap + custom)
-│
-├── js/
-│   ├── data.js         ← Berisi data pengguna, katalog buku, dan tracking
-│   └── script.js       ← Berisi logika login, logout, katalog, dan tracking
-│
-└── README.md
-```
+## ✨ Fitur Utama
+- Halaman Login sederhana  
+- Dashboard menampilkan daftar buku  
+- Halaman Stok untuk melihat jumlah stok buku  
+- Halaman Tracking untuk melihat status pesanan  
+- Halaman Checkout untuk menyelesaikan pesanan
 
 ---
 
-## 🚀 Cara Menjalankan di Visual Studio Code
+## 📸 Preview & Penjelasan per Gambar
 
-1. **Buka folder proyek**
-   - Jalankan VS Code → Klik **File → Open Folder...** → pilih folder `KatalogBukuApp`.
+> Letakkan screenshot pada folder img/ dengan nama file yang direkomendasikan di bawah. Ganti file sesuai hasil screenshotmu.
 
-2. **Buka file `index.html`**
-   - Klik kanan → pilih **"Open with Live Server"** (jika sudah menginstal ekstensi Live Server).  
-   - Atau cukup buka file `index.html` dengan browser (Chrome / Edge / Firefox).
+### 1. Login Page
+*File:* img/login-preview.png  
+*Penjelasan:*  
+Halaman untuk autentikasi pengguna. Komponen utama:
+- Form input email/username dan password  
+- Tombol Login  
+- Pesan validasi sederhana (cek input kosong / kredensial salah)  
+*Tujuan:* Mengamankan akses ke dashboard dan fitur pemesanan.
 
-3. **Login menggunakan data berikut:**
-   | Nama | Email | Password | Role |
-   |------|--------|-----------|------|
-   | Rina Wulandari | rina@gmail.com | rina123 | User |
-   | Agus Pranoto | agus@gmail.com | agus123 | User |
-   | Siti Marlina | siti@gmail.com | siti123 | Admin |
-
-4. Setelah login berhasil, kamu akan diarahkan ke halaman **Dashboard (Katalog Buku)**.  
-   - Kamu bisa melihat daftar buku dengan gambar, nama, harga, dan stok.
-   - Untuk melacak pesanan, buka file `tracking.html`.
-
-5. **Tracking Pesanan:**
-   - Buka `tracking.html` di browser.
-   - Masukkan nomor DO yang tersedia, misalnya:
-     - `20230012` → pesanan milik Rina
-     - `20230013` → pesanan milik Agus
+![Login Page](img/login-p.png)
 
 ---
 
-## 📦 Data Dummy
+### 2. Dashboard
+*File:* img/dashboard-preview.png  
+*Penjelasan:*  
+Halaman utama setelah login. Menampilkan:
+- Daftar buku (thumbnail, judul, harga singkat)  
+- Tombol atau link menuju halaman detail / tambah ke keranjang  
+- Ringkasan singkat (jumlah buku, notifikasi pesanan)  
+*Tujuan:* Memudahkan pengguna menjelajah koleksi buku dan melakukan aksi cepat.
 
-### 🧑 Data Pengguna
-Disimpan dalam `js/data.js`:
-```js
-const dataPengguna = [
-  { id: 1, nama: "Rina Wulandari", email: "rina@gmail.com", password: "rina123", role: "User" },
-  { id: 2, nama: "Agus Pranoto", email: "agus@gmail.com", password: "agus123", role: "User" },
-  { id: 3, nama: "Siti Marlina", email: "siti@gmail.com", password: "siti123", role: "Admin" }
-];
-```
-
-### 📘 Data Buku
-Berisi 5 contoh buku:
-- Pengantar Komunikasi  
-- Manajemen Keuangan  
-- Kepemimpinan Modern  
-- Mikrobiologi Dasar  
-- Psikologi Pendidikan PAUD  
-
-### 🚚 Data Tracking
-Berisi 2 contoh riwayat pengiriman:
-- Nomor DO **20230012** → milik Rina  
-- Nomor DO **20230013** → milik Agus  
+![Dashboard](img/dashboard-preview.png)
 
 ---
 
-## 🎨 Tampilan Aplikasi
-1. **Login Page**  
-   Pengguna memasukkan email dan password untuk mengakses aplikasi.
+### 3. Halaman Stok Buku
+*File:* img/stok-preview.png  
+*Penjelasan:*  
+Menampilkan informasi stok tiap buku:
+- Nama buku, kode/ID, stok tersedia  
+- Indikator stok rendah (opsional)  
+- Fitur pencarian / filter sederhana (opsional)  
+*Tujuan:* Memantau ketersediaan barang sebelum melakukan checkout.
 
-2. **Dashboard / Katalog Buku**  
-   Menampilkan kartu (card) tiap buku lengkap dengan gambar, harga, stok, dan informasi dasar.
-
-3. **Tracking Pesanan**  
-   Pengguna memasukkan nomor DO untuk melihat status pengiriman dan riwayat perjalanan paket.
-
----
-
-## ⚙️ Teknologi yang Digunakan
-- **HTML5** → Struktur halaman  
-- **CSS3** + **Bootstrap 5** → Desain antarmuka  
-- **JavaScript (Vanilla)** → Logika login, katalog, dan tracking  
-- **LocalStorage** → Menyimpan data pengguna aktif tanpa database  
+![Stok Buku](img/stok-preview.png)
 
 ---
 
-## 👩‍💻 Author
-**Nama:** _Nurul Fadilah_  
-**Project:** _Aplikasi Katalog Buku & Tracking Pesanan_  
-**Mata Kuliah:** _Pemrograman Web Dasar_  
-**Dosen Pengampu:** _[Isi sesuai dosen kamu]_  
-**Tahun:** 2025  
+### 4. Tracking Pesanan
+*File:* img/tracking-preview.png  
+*Penjelasan:*  
+Halaman untuk melihat status pesanan setelah checkout:
+- Nomor/order ID, status (diproses / dikirim / selesai)  
+- Estimasi waktu pengiriman (opsional)  
+- Riwayat perubahan status (opsional)  
+*Tujuan:* Memberi transparansi terhadap proses pemesanan ke pengguna.
+
+![Tracking](img/tracking-preview.png)
 
 ---
 
-## 📝 Catatan
-- Pastikan semua file (`data.js`, `script.js`, `style.css`) sudah dipanggil di setiap halaman.
-- Jika gambar tidak muncul, periksa URL gambar (atau gunakan folder `img` lokal).
-- Untuk memulai ulang login, hapus data di localStorage melalui **Inspect → Application → Local Storage → Clear**.
+### 5. Checkout
+*File:* img/checkout-preview.png  
+*Penjelasan:*  
+Halaman konfirmasi pesanan sebelum pembayaran:
+- Ringkasan item di keranjang (judul, jumlah, subtotal)  
+- Form alamat pengiriman & nomor telepon  
+- Tombol Konfirmasi / Bayar  
+*Tujuan:* Mengumpulkan data final untuk memproses pesanan.
+
+![Checkout](img/checkout-preview.png)
