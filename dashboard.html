@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - Katalog Buku</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="#">📚 Katalog Buku</a>
+      <div class="ms-auto text-white" id="infoUser"></div>
+      <button class="btn btn-light btn-sm ms-3" onclick="logout()">Logout</button>
+    </div>
+  </nav>
+
+  <!-- Daftar Buku -->
+  <div class="container mt-4">
+    <h3 class="text-center mb-4 text-primary">Menu Utama - Daftar Buku</h3>
+    <div class="row" id="daftarBuku"></div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-primary text-white text-center py-3 mt-5">
+    <p class="mb-0">© 2025 Sistem Katalog Buku | Universitas Terbuka</p>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script>
+    // Cek login
+    const pengguna = JSON.parse(localStorage.getItem("penggunaLogin"));
+    if (!pengguna) {
+      alert("Silakan login terlebih dahulu!");
+      window.location.href = "index.html";
+    }
+
+    // Tampilkan nama di navbar
+    document.getElementById("infoUser").innerHTML = `${pengguna.nama} (${pengguna.role})`;
+
+    // Logout
+    function logout() {
+      localStorage.removeItem("penggunaLogin");
+      window.location.href = "index.html";
+    }
+
+    // Tampilkan daftar buku
+    const container = document.getElementById("daftarBuku");
+    dataKatalogBuku.forEach(buku => {
+      container.innerHTML += `
+        <div class="col-md-4 mb-4">
+          <div class="card h-100 shadow-sm">
+            <img src="${buku.cover}" class="card-img-top" alt="${buku.namaBarang}" style="height:250px; object-fit:cover;">
+            <div class="card-body">
+              <h5 class="card-title">${buku.namaBarang}</h5>
+              <p class="card-text">
+                <strong>Kode:</strong> ${buku.kodeBarang}<br>
+                <strong>Jenis:</strong> ${buku.jenisBarang}<br>
+                <strong>Edisi:</strong> ${buku.edisi}<br>
+                <strong>Harga:</strong> ${buku.harga}<br>
+                <strong>Stok:</strong> ${buku.stok}
+              </p>
+              <a href="checkout.html?kode=${buku.kodeBarang}" class="btn btn-outline-primary w-100">Pesan Sekarang</a>
+            </div>
+          </div>
+        </div>
+      `;
+    });
+  </script>
+</body>
+</html>

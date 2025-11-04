@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - Katalog Buku</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-light">
+
+  <div class="container d-flex justify-content-center align-items-center vh-100">
+    <div class="card shadow p-4" style="width: 400px;">
+      <h3 class="text-center text-primary mb-4">📚 Login Sistem Buku</h3>
+
+      <form id="loginForm">
+        <div class="mb-3">
+          <label class="form-label">Email</label>
+          <input type="email" id="email" class="form-control" placeholder="Masukkan email" required>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Password</label>
+          <input type="password" id="password" class="form-control" placeholder="Masukkan password" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100">Masuk</button>
+      </form>
+
+      <p class="text-center mt-3 text-muted small">© 2025 Sistem Katalog Buku</p>
+    </div>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script>
+    // Proses Login
+    document.getElementById("loginForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+
+      const pengguna = dataPengguna.find(u => u.email === email && u.password === password);
+
+      if (pengguna) {
+        localStorage.setItem("penggunaLogin", JSON.stringify(pengguna));
+        alert("Selamat datang, " + pengguna.nama + "!");
+        window.location.href = "dashboard.html";
+      } else {
+        alert("Email atau password salah!");
+      }
+    });
+  </script>
+</body>
+</html>

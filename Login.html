@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+
+  <div class="container mt-5">
+    <div class="col-md-4 mx-auto">
+      <div class="card shadow">
+        <div class="card-body">
+          <h3 class="text-center mb-4">Login</h3>
+          <div class="mb-3">
+            <label>Email</label>
+            <input type="email" id="email" class="form-control">
+          </div>
+          <div class="mb-3">
+            <label>Password</label>
+            <input type="password" id="password" class="form-control">
+          </div>
+          <button class="btn btn-primary w-100" onclick="login()">Masuk</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Data dari contoh kamu
+    var dataPengguna = [
+      { id: 1, nama: "Rina Wulandari", email: "rina@gmail.com", password: "rina123", role: "User" },
+      { id: 2, nama: "Agus Pranoto", email: "agus@gmail.com", password: "agus123", role: "User" },
+      { id: 3, nama: "Siti Marlina", email: "siti@gmail.com", password: "siti123", role: "Admin" }
+    ];
+
+    var dataKatalogBuku = [
+      { kodeBarang: "ASIP4301", namaBarang: "Pengantar Ilmu Komunikasi", jenisBarang: "Buku Ajar", edisi: "2", stok: 548, harga: "Rp 180.000", cover: "img/pengantar_komunikasi.jpg" },
+      { kodeBarang: "EKMA4002", namaBarang: "Manajemen Keuangan", jenisBarang: "Buku Ajar", edisi: "3", stok: 392, harga: "Rp 220.000", cover: "img/manajemen_keuangan.jpg" },
+      { kodeBarang: "EKMA4310", namaBarang: "Kepemimpinan", jenisBarang: "Buku Ajar", edisi: "1", stok: 278, harga: "Rp 150.000", cover: "img/kepemimpinan.jpg" },
+      { kodeBarang: "BIOL4211", namaBarang: "Mikrobiologi Dasar", jenisBarang: "Buku Ajar", edisi: "2", stok: 165, harga: "Rp 200.000", cover: "img/mikrobiologi.jpg" },
+      { kodeBarang: "PAUD4401", namaBarang: "Perkembangan Anak Usia Dini", jenisBarang: "Buku Ajar", edisi: "4", stok: 204, harga: "Rp 250.000", cover: "img/paud_perkembangan.jpeg" }
+    ];
+
+    // Simpan data ke localStorage agar bisa diakses di index
+    localStorage.setItem("dataKatalogBuku", JSON.stringify(dataKatalogBuku));
+
+    function login() {
+      var email = document.getElementById("email").value;
+      var password = document.getElementById("password").value;
+
+      var pengguna = dataPengguna.find(p => p.email === email && p.password === password);
+
+      if (pengguna) {
+        localStorage.setItem("penggunaAktif", JSON.stringify(pengguna));
+        alert("Login berhasil! Selamat datang " + pengguna.nama);
+        window.location.href = "index.html";
+      } else {
+        alert("Email atau password salah!");
+      }
+    }
+  </script>
+
+</body>
+</html>
+<link rel="stylesheet" href="css/style.css">
